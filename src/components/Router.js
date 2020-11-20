@@ -13,7 +13,6 @@ export default class Router extends Component {
         <BrowserRouter>
           <Menu />
           <Switch>
-            <Route exact path="/" component={Menu} />
             <Route
               exact
               path="/detalles/:idserie"
