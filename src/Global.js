@@ -1,2 +1,4 @@
-const Global = {};
+const Global = {
+  url: "https://apiseriespersonajes.azurewebsites.net/",
+};
 export default Global;

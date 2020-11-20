@@ -1,24 +1,44 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Menu from "./CRUD/Menu";
+import ModificarPersonaje from "./CRUD/ModificarPersonaje";
+import NuevoPersonaje from "./CRUD/NuevoPersonaje";
+import PersonajesSerie from "./CRUD/PersonajesSerie";
+import Series from "./CRUD/Series";
 
 export default class Router extends Component {
   render() {
     return (
-      <BrowserRouter>
-        {/* Aqui va el menu */}
-        <Switch>
-          <Route exact path="/" component={/*Aqui el componente Home*/} />
-          <Route
-            exact
-            // path="/detalles/:iddepartamento"
-            //ESTO PARA CUANDO LLEVA PARAMETROS
-            // render={(props) => {
-            //   var idDepart = props.match.params.iddepartamento;
-            //   return <DetallesDepartamento iddepartamento={idDepart} />;
-            // }}
-          />
-        </Switch>
-      </BrowserRouter>
+      <div>
+        <BrowserRouter>
+          <Menu />
+          <Switch>
+            <Route exact path="/" component={Menu} />
+            <Route
+              exact
+              path="/detalles/:idserie"
+              render={(props) => {
+                var id = props.match.params.idserie;
+                return <Series idSerie={id} />;
+              }}
+            />
+            <Route
+              exact
+              path="/detalles/seriepersonajes/:idserie"
+              render={(props) => {
+                var id = props.match.params.idserie;
+                return <PersonajesSerie idSerie={id} />;
+              }}
+            />
+            <Route exact path="/nuevopersonaje" component={NuevoPersonaje} />
+            <Route
+              exact
+              path="/modificarpersonaje"
+              component={ModificarPersonaje}
+            />
+          </Switch>
+        </BrowserRouter>
+      </div>
     );
   }
 }
